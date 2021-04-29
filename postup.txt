@@ -1,0 +1,35 @@
+
+POSTUP PRE PRIPOJENIE KU DB:
+
+1.) Zaregistruj sa na https://cloud.mongodb.com/
+
+2.) V sekcii Organizations si kliknutim na tladiclo Create New Organization vytvor svoju organizaciu.
+
+3.) V ramci svojej organizacie si vlavo, prejdenim do sekcie Projects a kliknutim na tlacidlo New Project, vytvor svoj projekt.
+    Vo svojom projekte potom vlavo uvidis menu so sekciami DATA STORAGE a SECURITY.
+
+4.) V sekcii DATA STORAGE -> Clusters si vytvor novy cluster od vybraneho poskytovatela cloudovych 
+    sluzieb (ja som napr. zvolil AWS a region Frankfurt eu-central-1).
+
+5.) V sekcii SECURITY -> Database Access si kliknutim na tlacidlo +ADD NEW DATABASE USER vytvor 
+    pouzivatela (s privilegiami Read and write to any database) a pridaj ho do clastra.
+
+6.) V SEKCII SECURITY -> Network Access si kliknutim na tlacidlo +ADD IP ADDRESS pridaj IP adresu, z ktorej 
+    sa bude mozne pre daneho pouzivatela na cluster pripojit. Mozes zadat bud iba 
+    svoju IP-cku (pre pripojenie na cluster z tvojej IP), alebo zvolit pristup odkialkolvek (IP: 0.0.0.0/0).
+
+7.) V sekcii DATA STORAGE -> Clusters (alebo kliknutim na nazov svojho clastra a prejdenim do sekcie Overview) 
+    sa pripoj na cluster cez tlacidlo Connect. Zvol moznost Connect your application a skopiruj connection string.
+
+8.) Nahrad connection string v subore .env svojim connection stringom.
+
+9.) Projekt mozes spustit cez nodemon a ak sa ti podari uspesne pripojit ku DB, dolu v konzole uvidis status, ze si sa pripojil.
+
+10.)Do prehliadaca potom zadaj http://localhost:3000/, pretoze v index.js je nastavene, aby server pocuval a prijimal requesty
+    na porte 3000 (samozrejme, cislo portu v index.js si mozes zmenit, no nezabudni ho potom upravit aj v prehliadaci).
+
+11.)Zobrazi sa ti aplikacia To-do listu s nejakymi polozkami. Tieto polozky najdes aj v DB, v sekcii 
+    DATA STORAGE -> Clusters -> Tvoj Cluster -> Collections.
+
+12.)Ak nieco pridas, upravis alebo zmazes v aplikacii, zmena sa prejavi aj v DB hned potom, ako ju refreshnes.
+    Rovnako to plati aj opacne - ak nieco zmenis v DB, zmena sa po refreshi tvojej stranky prejavi aj v aplikacii.
